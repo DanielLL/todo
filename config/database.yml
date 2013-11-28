@@ -1,0 +1,28 @@
+development: &development
+  adapter: postgresql
+  database: evaluation_development
+  username: root
+  password: root 
+  pool: 5
+  timeout: 5000
+
+test:
+  <<: *development
+  database: evaluation_test
+
+production: &production
+  adapter: postgresql
+  database: evaluation_production
+  pool: 5
+  timeout: 5000
+
+staging:
+  <<: *production
+  database: evaluation_staging
+
+integration:
+  <<: *production
+  database: evaluation_integration
+
+# Matching environments specified in this file will override the above.
+<%= IO.read('config/database.local.yml') if File.exists?('config/database.local.yml') %>
