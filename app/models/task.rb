@@ -1,7 +1,4 @@
 class Task < ActiveRecord::Base
-  default_scope where(:completed => false)
+  default_scope :order => 'created_at ASC'
 
-  def complete
-    self.update_attributes(completed: true)
-  end
 end

@@ -15,14 +15,17 @@
         <% @tasks.each do |task| %>
         <tr id="<%= task.id %>" class="task_element">
           <td><%= task.id %></td>
-          <td><%= task.title%></td>
-          <td><input class="complete" type='checkbox'/><label class='btn btn-danger btn-mini'>X</label></td>
+          <td class='task_title'><%= task.title%></td>
+          <td>
+            <input class="complete" type='checkbox' <%= "checked" if task.completed %>/>
+            <label class='deleteItem btn btn-danger btn-mini'>X</label>
+          </td>
         </tr>
         <% end %>
       </tbody>
     </table>
 
-    <a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+    <a href="#myModal" role="button" class="btn" data-toggle="modal">New task</a>
 
     <!-- Modal -->
   </div>

@@ -14,6 +14,8 @@ end
 
 group :test do
   gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'cucumber'
   gem 'database_cleaner'
   gem 'rspec-rails'
   gem 'pry'
