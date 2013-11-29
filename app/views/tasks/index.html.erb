@@ -1,0 +1,44 @@
+<div class="todo_container">
+
+  <h1>Todo tasks</h1>
+  <div class="tasks_list">
+
+    <table id="tasks_elements" class="table table-striped">
+      <thead>
+        <tr>
+          <th>#Id</th>
+          <th>Task Name</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @tasks.each do |task| %>
+        <tr id="<%= task.id %>" class="task_element">
+          <td><%= task.id %></td>
+          <td><%= task.title%></td>
+          <td><input class="complete" type='checkbox'/><label class='btn btn-danger btn-mini'>X</label></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+
+    <!-- Modal -->
+  </div>
+  <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+      <h3>New task</h1>
+    </div>
+    <div class="modal-body form-horizontal">
+      <label class="control-label" for="inputTaksName">Task's name</label>
+      <div class="controls">
+        <input type="text" id="inputTaksName" placeholder="Task's Name">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button id="close" class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+      <button class="btn btn-primary">Save task</button>
+    </div>
+  </div>
