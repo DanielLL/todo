@@ -38,10 +38,20 @@ $(document).ready(function(){
     $(".complete").on('change', function(){
       container  = $(this).parents(".task_element");
       isComplete = $(this).is(":checked");
-      title      = container.find(".task_title").text();
+      title      = container.find(".task_title label").text();
       task = { id: parseInt(container.attr("id")),title: title , completed: isComplete}
       update_task(task);
     });
+
+
+    $(".task_title label").click(function(){
+      edit_mode($(this).parent(), true);
+    });
+
+
+    $("input.input_task").on("keyup", function(){
+
+    })
   },
 
 
@@ -88,7 +98,10 @@ $(document).ready(function(){
   var insert_element = function(container, task){
     container.append("<tr id='"+ task.id +"' class='task_element'>\
                      <td>"+ task.id +"</td>\
-                     <td class='task_title'>"+ task.title + "</td>\
+                     <td class='task_title'>\
+                     <label>"+ task.title + "</label>\
+                     <input type='text' class='input_task hidden'/>\
+                     </td>\
                      <td><input class='complete' type='checkbox'>\
                      <label class='deleteItem btn btn-danger btn-mini'>X</label>\
                      </td>\
@@ -98,13 +111,26 @@ $(document).ready(function(){
   }
 
   var update_element = function(task){
-   container = $(".task_element[id="+task.id+"]");
-   container.find(".task_title").text(task.title);
-  
+    container = $(".task_element[id="+task.id+"]");
+    container.find(".task_title label").text(task.title);
+
   }
   var remove_element = function(taskId){
     $(".task_element[id="+taskId+"]").remove();
     add_events();
+  }
+
+  var edit_mode = function(container, flag){
+
+    if (flag){
+      container.find("label").toggle();
+      container.find("input").removeClass("hidden");
+    }
+    else {
+      container.find("label").toggle();
+      container.find("input").addClass("hidden");
+
+    }
   }
 
 });

@@ -15,7 +15,10 @@
         <% @tasks.each do |task| %>
         <tr id="<%= task.id %>" class="task_element">
           <td><%= task.id %></td>
-          <td class='task_title'><%= task.title%></td>
+          <td class='task_title'>
+            <label><%= task.title%></label>
+            <input type="text" class='input_task hidden'/>
+          </td>
           <td>
             <input class="complete" type='checkbox' <%= "checked" if task.completed %>/>
             <label class='deleteItem btn btn-danger btn-mini'>X</label>

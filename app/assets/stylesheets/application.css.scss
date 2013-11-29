@@ -37,5 +37,11 @@
       font-size: 15px;
       line-height: 22px;
     }
+    input.input_task {
+      width: 20%;
+      &.hidden {
+        display: none;
+      }
+    }
   }
 }
